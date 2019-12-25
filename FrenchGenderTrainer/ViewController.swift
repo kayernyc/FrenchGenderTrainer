@@ -13,7 +13,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-
+    // Move this to app delegate and inject
     let wordDictionary = DictionaryFactory()
     wordDictionary.processDictionary()
   }
