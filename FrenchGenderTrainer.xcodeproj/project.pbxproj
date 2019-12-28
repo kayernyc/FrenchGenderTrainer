@@ -10,6 +10,13 @@
 		1948CADA214A748F84DEA5D5 /* Pods_FrenchGenderTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */; };
 		5BA015AA2250E3AE00DBDDFD /* DictionaryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA015A92250E3AE00DBDDFD /* DictionaryFactory.swift */; };
 		5BC527B722888AF800841E0F /* FrenchNouns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BC527B522888AF800841E0F /* FrenchNouns.xcdatamodeld */; };
+		5BE14AE023B79B7000EEBB89 /* french-nouns.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE14ADF23B79B6F00EEBB89 /* french-nouns.json */; };
+		5BE14AE523B7BFA700EEBB89 /* FrenchWord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE14AE323B7BFA700EEBB89 /* FrenchWord+CoreDataClass.swift */; };
+		5BE14AE623B7BFA700EEBB89 /* FrenchWord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE14AE423B7BFA700EEBB89 /* FrenchWord+CoreDataProperties.swift */; };
+		5BE14AE923B7C6C200EEBB89 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE14AE823B7C6C200EEBB89 /* CoreDataStack.swift */; };
+		5BE14AED23B7F59D00EEBB89 /* FrenchNouns.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 5BE14AEA23B7F59C00EEBB89 /* FrenchNouns.sqlite-shm */; };
+		5BE14AEE23B7F59D00EEBB89 /* FrenchNouns.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 5BE14AEB23B7F59D00EEBB89 /* FrenchNouns.sqlite-wal */; };
+		5BE14AEF23B7F59D00EEBB89 /* FrenchNouns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5BE14AEC23B7F59D00EEBB89 /* FrenchNouns.sqlite */; };
 		5BFCCABB22314CAF0094ECB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCABA22314CAF0094ECB1 /* AppDelegate.swift */; };
 		5BFCCABD22314CAF0094ECB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCABC22314CAF0094ECB1 /* ViewController.swift */; };
 		5BFCCAC022314CAF0094ECB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFCCABE22314CAF0094ECB1 /* Main.storyboard */; };
@@ -33,6 +40,13 @@
 /* Begin PBXFileReference section */
 		5BA015A92250E3AE00DBDDFD /* DictionaryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryFactory.swift; sourceTree = "<group>"; };
 		5BC527B622888AF800841E0F /* FrenchNouns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FrenchNouns.xcdatamodel; sourceTree = "<group>"; };
+		5BE14ADF23B79B6F00EEBB89 /* french-nouns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "french-nouns.json"; sourceTree = "<group>"; };
+		5BE14AE323B7BFA700EEBB89 /* FrenchWord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FrenchWord+CoreDataClass.swift"; path = "/Users/kathrinayer/FrenchGenderTrainer/FrenchGenderTrainer/Data/FrenchWord+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		5BE14AE423B7BFA700EEBB89 /* FrenchWord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FrenchWord+CoreDataProperties.swift"; path = "/Users/kathrinayer/FrenchGenderTrainer/FrenchGenderTrainer/Data/FrenchWord+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		5BE14AE823B7C6C200EEBB89 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		5BE14AEA23B7F59C00EEBB89 /* FrenchNouns.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FrenchNouns.sqlite-shm"; sourceTree = "<group>"; };
+		5BE14AEB23B7F59D00EEBB89 /* FrenchNouns.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FrenchNouns.sqlite-wal"; sourceTree = "<group>"; };
+		5BE14AEC23B7F59D00EEBB89 /* FrenchNouns.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = FrenchNouns.sqlite; sourceTree = "<group>"; };
 		5BFCCAB722314CAF0094ECB1 /* FrenchGenderTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrenchGenderTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFCCABA22314CAF0094ECB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BFCCABC22314CAF0094ECB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +91,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5BE14AE723B7C6AA00EEBB89 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5BE14AE823B7C6C200EEBB89 /* CoreDataStack.swift */,
+				5BE14AE323B7BFA700EEBB89 /* FrenchWord+CoreDataClass.swift */,
+				5BE14AE423B7BFA700EEBB89 /* FrenchWord+CoreDataProperties.swift */,
+				5BE14AEC23B7F59D00EEBB89 /* FrenchNouns.sqlite */,
+				5BE14AEA23B7F59C00EEBB89 /* FrenchNouns.sqlite-shm */,
+				5BE14AEB23B7F59D00EEBB89 /* FrenchNouns.sqlite-wal */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		5BFCCAAE22314CAF0094ECB1 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +127,7 @@
 		5BFCCAB922314CAF0094ECB1 /* FrenchGenderTrainer */ = {
 			isa = PBXGroup;
 			children = (
+				5BE14AE723B7C6AA00EEBB89 /* CoreData */,
 				5BFCCACD22314CD90094ECB1 /* Data */,
 				5BFCCACC22314CC30094ECB1 /* Models */,
 				5BFCCABA22314CAF0094ECB1 /* AppDelegate.swift */,
@@ -124,6 +152,7 @@
 		5BFCCACD22314CD90094ECB1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5BE14ADF23B79B6F00EEBB89 /* french-nouns.json */,
 				5BFCCACE22314CED0094ECB1 /* GenderRulesText.swift */,
 				5BA015A92250E3AE00DBDDFD /* DictionaryFactory.swift */,
 			);
@@ -234,9 +263,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE14AEE23B7F59D00EEBB89 /* FrenchNouns.sqlite-wal in Resources */,
+				5BE14AEF23B7F59D00EEBB89 /* FrenchNouns.sqlite in Resources */,
 				5BFCCAC522314CB00094ECB1 /* LaunchScreen.storyboard in Resources */,
+				5BE14AED23B7F59D00EEBB89 /* FrenchNouns.sqlite-shm in Resources */,
 				5BFCCAC222314CB00094ECB1 /* Assets.xcassets in Resources */,
 				5BFCCAC022314CAF0094ECB1 /* Main.storyboard in Resources */,
+				5BE14AE023B79B7000EEBB89 /* french-nouns.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +294,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\necho \"SwiftLint!!!\"\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\necho \"SwiftLint!!!\"\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
 		};
 		8B09B17A0E5B42E01618EE73 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -310,8 +343,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE14AE523B7BFA700EEBB89 /* FrenchWord+CoreDataClass.swift in Sources */,
 				5BFCCAD222341A150094ECB1 /* WordFetch.swift in Sources */,
 				5BFCCABD22314CAF0094ECB1 /* ViewController.swift in Sources */,
+				5BE14AE923B7C6C200EEBB89 /* CoreDataStack.swift in Sources */,
+				5BE14AE623B7BFA700EEBB89 /* FrenchWord+CoreDataProperties.swift in Sources */,
 				5BA015AA2250E3AE00DBDDFD /* DictionaryFactory.swift in Sources */,
 				5BC527B722888AF800841E0F /* FrenchNouns.xcdatamodeld in Sources */,
 				5BFCCACF22314CED0094ECB1 /* GenderRulesText.swift in Sources */,
