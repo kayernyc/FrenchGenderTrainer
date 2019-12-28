@@ -11,37 +11,56 @@ import UIKit
 import CoreData
 
 class DictionaryFactory {
-  private struct FrenchDataRecord {
-    
+  private let managedContext: NSManagedObjectContext
+  private let entity: NSEntityDescription
+
+  init() {
+    managedContext = CoreDataStack.sharedInstance.persistentContainer.viewContext
+    entity = NSEntityDescription.entity(forEntityName: "FrenchWord", in: managedContext)!
   }
+}
 
-  private func createData(dataStrings: [String]) {
+// MARK: - French Record building functions
+extension DictionaryFactory {
+  // Open this in the future
+  private func createFrenchWordFrom(dictionary: [String: AnyObject]) {
+    if let frenchWordEntity = NSEntityDescription.insertNewObject(forEntityName: "FrenchWord",
+                                                                  into: managedContext) as? FrenchWord {
+      // swiftlint:disable force_cast
+      frenchWordEntity.english = (dictionary["english"] as! String)
+      frenchWordEntity.french = (dictionary["french"] as! String)
+      frenchWordEntity.gender = dictionary["gender"] as! Int16
+      frenchWordEntity.genderRuleKey = dictionary["genderRuleKey"] as! Int64
+      frenchWordEntity.exception = dictionary["exception"] as! Bool
+      frenchWordEntity.version = 1
+      frenchWordEntity.wordKey = UUID()
+      // swiftlint:enable force_cast
 
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    let managedContext = appDelegate.persistentContainer.viewContext
-
-    for frenchWordRecord in dataStrings {
-      print("\n\(frenchWordRecord)\n")
+      do {
+        try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
+      } catch let error {
+        print(error)
+      }
     }
-
-    //let userEntity = NSEntityDescription.entity(forEntityName: "FrenchWord", in: managedContext)
-
   }
 
-  func processDictionary() {
-    let filepath = Bundle.main.path(forResource: "dictionary", ofType: "txt")
-    let URL = NSURL.fileURL(withPath: filepath!)
-
-    do {
-      let string = try String.init(contentsOf: URL)
-
-      let lines = string.components(separatedBy: "\n")
-      print("lines count: \(lines.count)")
-      createData(dataStrings: lines)
-
-      //print("read: \(string)")
-    } catch {
-      print(error)
+  private func processDictionary() {
+    // build function for initial file.
+    if let filepath = Bundle.main.url(forResource: "french-nouns", withExtension: "json") {
+      do {
+        let data = try Data(contentsOf: filepath)
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? NSArray else { return }
+        for line in json {
+          guard let dictRawFrenchRecord = line as? [String: AnyObject] else {
+            continue
+          }
+          createFrenchWordFrom(dictionary: dictRawFrenchRecord)
+        }
+      } catch {
+        print(error)
+      }
+    } else {
+      print("NOT FOUND")
     }
   }
 }

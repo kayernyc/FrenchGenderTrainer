@@ -12,6 +12,5 @@ class WordFetch {
   let dictionary = DictionaryFactory()
 
   init() {
-    dictionary.processDictionary()
   }
 }
