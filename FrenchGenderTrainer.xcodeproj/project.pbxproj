@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1948CADA214A748F84DEA5D5 /* Pods_FrenchGenderTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */; };
+		5B3253CD23BA2F5F005210D9 /* DataFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3253CC23BA2F5F005210D9 /* DataFacade.swift */; };
 		5BA015AA2250E3AE00DBDDFD /* DictionaryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA015A92250E3AE00DBDDFD /* DictionaryFactory.swift */; };
 		5BC527B722888AF800841E0F /* FrenchNouns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BC527B522888AF800841E0F /* FrenchNouns.xcdatamodeld */; };
 		5BE14AE023B79B7000EEBB89 /* french-nouns.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BE14ADF23B79B6F00EEBB89 /* french-nouns.json */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B3253CC23BA2F5F005210D9 /* DataFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFacade.swift; sourceTree = "<group>"; };
 		5BA015A92250E3AE00DBDDFD /* DictionaryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryFactory.swift; sourceTree = "<group>"; };
 		5BC527B622888AF800841E0F /* FrenchNouns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FrenchNouns.xcdatamodel; sourceTree = "<group>"; };
 		5BE14ADF23B79B6F00EEBB89 /* french-nouns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "french-nouns.json"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				5BE14ADF23B79B6F00EEBB89 /* french-nouns.json */,
 				5BFCCACE22314CED0094ECB1 /* GenderRulesText.swift */,
 				5BA015A92250E3AE00DBDDFD /* DictionaryFactory.swift */,
+				5B3253CC23BA2F5F005210D9 /* DataFacade.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				5BE14AE523B7BFA700EEBB89 /* FrenchWord+CoreDataClass.swift in Sources */,
 				5BFCCAD222341A150094ECB1 /* WordFetch.swift in Sources */,
 				5BFCCABD22314CAF0094ECB1 /* ViewController.swift in Sources */,
+				5B3253CD23BA2F5F005210D9 /* DataFacade.swift in Sources */,
 				5BE14AE923B7C6C200EEBB89 /* CoreDataStack.swift in Sources */,
 				5BE14AE623B7BFA700EEBB89 /* FrenchWord+CoreDataProperties.swift in Sources */,
 				5BA015AA2250E3AE00DBDDFD /* DictionaryFactory.swift in Sources */,

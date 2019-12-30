@@ -11,10 +11,13 @@ import UIKit
 import CoreData
 
 class DictionaryFactory {
-  private let managedContext: NSManagedObjectContext
+  let managedContext: NSManagedObjectContext
+  
   private let entity: NSEntityDescription
 
-  init() {
+  static let sharedInstance = DictionaryFactory()
+
+  private init() {
     managedContext = CoreDataStack.sharedInstance.persistentContainer.viewContext
     entity = NSEntityDescription.entity(forEntityName: "FrenchWord", in: managedContext)!
   }
