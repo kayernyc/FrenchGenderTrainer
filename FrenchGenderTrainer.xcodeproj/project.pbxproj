@@ -23,7 +23,7 @@
 		5BFCCAC022314CAF0094ECB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFCCABE22314CAF0094ECB1 /* Main.storyboard */; };
 		5BFCCAC222314CB00094ECB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFCCAC122314CB00094ECB1 /* Assets.xcassets */; };
 		5BFCCAC522314CB00094ECB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFCCAC322314CB00094ECB1 /* LaunchScreen.storyboard */; };
-		5BFCCACF22314CED0094ECB1 /* GenderRulesText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCACE22314CED0094ECB1 /* GenderRulesText.swift */; };
+		5BFCCACF22314CED0094ECB1 /* GenderRulesStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCACE22314CED0094ECB1 /* GenderRulesStruct.swift */; };
 		5BFCCAD222341A150094ECB1 /* WordFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCAD122341A150094ECB1 /* WordFetch.swift */; };
 		5BFCCADA22341AB30094ECB1 /* FrenchGenderTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCAD922341AB30094ECB1 /* FrenchGenderTrainerTests.swift */; };
 /* End PBXBuildFile section */
@@ -56,7 +56,7 @@
 		5BFCCAC122314CB00094ECB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BFCCAC422314CB00094ECB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BFCCAC622314CB00094ECB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5BFCCACE22314CED0094ECB1 /* GenderRulesText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderRulesText.swift; sourceTree = "<group>"; };
+		5BFCCACE22314CED0094ECB1 /* GenderRulesStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderRulesStruct.swift; sourceTree = "<group>"; };
 		5BFCCAD122341A150094ECB1 /* WordFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordFetch.swift; sourceTree = "<group>"; };
 		5BFCCAD722341AB30094ECB1 /* FrenchGenderTrainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrenchGenderTrainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFCCAD922341AB30094ECB1 /* FrenchGenderTrainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenchGenderTrainerTests.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				5BE14ADF23B79B6F00EEBB89 /* french-nouns.json */,
-				5BFCCACE22314CED0094ECB1 /* GenderRulesText.swift */,
+				5BFCCACE22314CED0094ECB1 /* GenderRulesStruct.swift */,
 				5BA015A92250E3AE00DBDDFD /* DictionaryFactory.swift */,
 				5B3253CC23BA2F5F005210D9 /* DataFacade.swift */,
 			);
@@ -354,7 +354,7 @@
 				5BE14AE623B7BFA700EEBB89 /* FrenchWord+CoreDataProperties.swift in Sources */,
 				5BA015AA2250E3AE00DBDDFD /* DictionaryFactory.swift in Sources */,
 				5BC527B722888AF800841E0F /* FrenchNouns.xcdatamodeld in Sources */,
-				5BFCCACF22314CED0094ECB1 /* GenderRulesText.swift in Sources */,
+				5BFCCACF22314CED0094ECB1 /* GenderRulesStruct.swift in Sources */,
 				5BFCCABB22314CAF0094ECB1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

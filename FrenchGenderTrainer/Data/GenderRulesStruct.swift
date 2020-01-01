@@ -1,5 +1,5 @@
 //
-//  GenderRulesText.swift
+//  GenderRulesStruct.swift
 //  FrenchGenderTrainer
 //
 //  Created by KATHRIN AYER on 3/7/19.
@@ -7,8 +7,6 @@
 //
 
 import Foundation
-// http://www.french-linguistics.co.uk/grammar/le_or_la_in_french.shtml
-// https://www.thoughtco.com/french-gender-masculine-endings-1368853
 
 struct GenderRuleAndException {
   let key: Int
@@ -19,7 +17,11 @@ struct GenderRuleAndException {
 }
 
 // swiftlint:disable line_length
-struct GenderRulesText {
+struct GenderRulesStruct {
+  func allRulesCount() -> Int {
+    return self.mascRulesCollection.count
+  }
+
   let mascRulesCollection = [
     GenderRuleAndException(key: 0, gender: 0, rule: "phone", exceptions: [], matches: []),
     GenderRuleAndException(key: 1, gender: 1, rule: "ence", exceptions: ["silence"], matches: []),

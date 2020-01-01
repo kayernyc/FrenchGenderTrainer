@@ -12,17 +12,28 @@ import CoreData
 
 class DataFacade {
   private let dictionaryFactory = DictionaryFactory.sharedInstance
+  private let rulesStruct = GenderRulesStruct()
+
+  private let defaultPredicate: NSPredicate
+  private let rulesCount: Int
+
+  init() {
+    rulesCount = rulesStruct.allRulesCount()
+    defaultPredicate = NSPredicate(format: "genderRuleKey IN %@", Array(0...rulesCount))
+  }
 }
 
 // MARK: - READ
 extension DataFacade {
-  func getRecords(fetchLimit: Int) -> [FrenchWord] {
+  // prepare for overloading if needed
+  func getRecords(fetchLimit: Int = 1, predicate: NSPredicate?) -> [FrenchWord] {
+    let predicate = predicate ?? self.defaultPredicate
     let context = dictionaryFactory.managedContext
 
     let wordFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "FrenchWord")
-    wordFetch.fetchLimit = 1
+    wordFetch.fetchLimit = fetchLimit
     wordFetch.returnsObjectsAsFaults = false
-    wordFetch.predicate = NSPredicate(format: "french = %@", "chou")
+    wordFetch.predicate = predicate
 
     do {
       // swiftlint:disable force_cast

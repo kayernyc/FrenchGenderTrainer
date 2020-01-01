@@ -15,6 +15,6 @@ class ViewController: UIViewController {
     // Do any additional setup after loading the view, typically from a nib.
     // Move this to app delegate and inject
     let dataFacade = DataFacade()
-    dataFacade.getRecords(fetchLimit: 1)
+    dataFacade.getRecords(fetchLimit: 3, predicate: nil)
   }
 }
