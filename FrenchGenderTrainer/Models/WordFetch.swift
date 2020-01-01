@@ -9,7 +9,7 @@
 import Foundation
 
 class WordFetch {
-  let dictionary = DictionaryFactory()
+//  let dictionary = DictionaryFactory()
 
   init() {
   }
