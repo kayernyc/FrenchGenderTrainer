@@ -7,29 +7,22 @@
 //
 
 import UIKit
-import RxSwift
 import RxCocoa
+import AVKit
 
 class GameView: UIViewController {
-  private let recordsStream: BehaviorRelay<[FrenchWord]> = BehaviorRelay(value: [])
   @IBOutlet var leftButton: UIButton!
   @IBOutlet var rightButton: UIButton!
-  
+  @IBOutlet var wordLabel: UILabel!
+
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    // Move this to app delegate and inject
-    let dataFacade = DataFacade()
-    dataFacade.getRecords(fetchLimit: 1, predicate: nil)
+    GameViewModel.init(leftButton: leftButton, rightButton: rightButton)
   }
 }
 
 // MARK: - Data Stream
 extension GameView {
-  func initObservables() {
-   // btnSignUp.rx.tap.subscribe(onNext:{[weak self] _ in
-    // perform action you want to perform
-    //}).addDisposableTo(disposeBag)
-  }
 
 }

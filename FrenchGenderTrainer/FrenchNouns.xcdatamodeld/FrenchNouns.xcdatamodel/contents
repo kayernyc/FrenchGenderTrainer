@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FrenchWord" representedClassName="FrenchWord" syncable="YES">
-        <attribute name="english" optional="YES" attributeType="String"/>
+        <attribute name="english" attributeType="String"/>
         <attribute name="exception" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="french" optional="YES" attributeType="String"/>
-        <attribute name="gender" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
-        <attribute name="genderRuleKey" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="version" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="french" attributeType="String"/>
+        <attribute name="gender" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="genderRuleKey" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="wordKey" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
     <elements>

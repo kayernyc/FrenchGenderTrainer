@@ -12,7 +12,6 @@ import CoreData
 
 class DictionaryFactory {
   let managedContext: NSManagedObjectContext
-  
   private let entity: NSEntityDescription
 
   static let sharedInstance = DictionaryFactory()
@@ -20,6 +19,7 @@ class DictionaryFactory {
   private init() {
     managedContext = CoreDataStack.sharedInstance.persistentContainer.viewContext
     entity = NSEntityDescription.entity(forEntityName: "FrenchWord", in: managedContext)!
+    processDictionary()
   }
 }
 

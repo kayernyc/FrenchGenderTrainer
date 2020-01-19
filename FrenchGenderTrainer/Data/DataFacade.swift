@@ -39,7 +39,6 @@ extension DataFacade {
       // swiftlint:disable force_cast
       let words = try context.fetch(wordFetch) as! [FrenchWord]
       // swiftlint:enable force_cast
-      print(words)
       return words
     } catch {
       print("ERROR: \(error)")
