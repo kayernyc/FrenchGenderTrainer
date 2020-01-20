@@ -26,12 +26,16 @@ class DataFacade {
 // MARK: - READ
 extension DataFacade {
   // prepare for overloading if needed
-  func getRecords(fetchLimit: Int = 1, predicate: NSPredicate?) -> [FrenchWord] {
+  func getRecords(fetchLimit: Int? , predicate: NSPredicate?) -> [FrenchWord] {
     let predicate = predicate ?? self.defaultPredicate
     let context = dictionaryFactory.managedContext
 
     let wordFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "FrenchWord")
-    wordFetch.fetchLimit = fetchLimit
+
+    if fetchLimit != nil {
+      wordFetch.fetchLimit = fetchLimit!
+    }
+
     wordFetch.returnsObjectsAsFaults = false
     wordFetch.predicate = predicate
 

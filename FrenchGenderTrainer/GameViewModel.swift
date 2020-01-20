@@ -12,7 +12,7 @@ import RxCocoa
 import AVKit
 
 class GameViewModel: NSObject {
-  private enum GameViewStateEnum: String {
+  enum GameViewStateEnum: String {
     case present
     case verify
     case explain
@@ -41,11 +41,10 @@ class GameViewModel: NSObject {
     }
   }
 
-  private let recordsStream: BehaviorSubject<[FrenchWord]> = BehaviorSubject(value: [])
   private let buttons: [Observable<Int>]
 
-  private let buttonStream: Observable<Int>
-  private let stateStream = BehaviorSubject(value: GameViewStateEnum.present)
+  let buttonStream: Observable<Int>
+  let stateStream = BehaviorSubject(value: GameViewStateEnum.explain)
 
   private let disposeBag = DisposeBag()
 
@@ -58,8 +57,6 @@ class GameViewModel: NSObject {
 
     buttonStream = Observable.merge(buttons)
 
-    let dataFacade = DataFacade()
-    //    let recordsStream.onNext(dataFacade.getRecords(fetchLimit: 10, predicate: nil))
     super.init()
     initObservables()
   }
