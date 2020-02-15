@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import AVKit
 
 class GameViewModel: NSObject {
   enum GameViewStateEnum: String {
@@ -29,26 +28,14 @@ class GameViewModel: NSObject {
     }
   }
 
-  private enum SpeechEnum: String {
-    case male
-    case female
-
-    func voiceProfile() -> String {
-      switch self {
-      case .male: return "fr"
-      case .female: return "fr-ca"
-      }
-    }
-  }
+  typealias StateButtonTuple = (GameViewStateEnum, Int16)
 
   private let buttons: [Observable<Int>]
 
   let buttonStream: Observable<Int>
-  let stateStream = BehaviorSubject(value: GameViewStateEnum.explain)
+  let stateStream = BehaviorSubject(value: (GameViewStateEnum.explain, 0 as Int16))
 
   private let disposeBag = DisposeBag()
-
-  private let speechSynthesizer: AVSpeechSynthesizer! = AVSpeechSynthesizer()
 
   init(leftButton: UIButton, rightButton: UIButton) {
     buttons = [leftButton, rightButton]
@@ -66,24 +53,26 @@ class GameViewModel: NSObject {
 private extension GameViewModel {
   func buttonAdvance(buttonTag: Int) {
     do {
-      let currentState = try stateStream.value()
+      let (currentState, _) = try stateStream.value()
+      let button16 = Int16(buttonTag)
       let newState = currentState.advanceState()
-      stateStream.on(.next(newState))
+      stateStream.on(.next((newState, button16)))
     } catch {
       print(error)
     }
   }
 
-  private func stateHander(state: GameViewStateEnum) {
+  private func stateHander(stateTuple: StateButtonTuple) {
+    let (state, _) = stateTuple
     switch state {
     case .present:
-      print("begin")
+      print("begin from GameViewModel")
 
     case .verify:
-      print("verify")
+      print("verify from GameViewModel")
 
     case .explain:
-      print("explain")
+      print("explain from GameViewModel")
     }
   }
 
@@ -109,15 +98,5 @@ private extension GameViewModel {
 
     buttonStreamSubscription.disposed(by: disposeBag)
     stateStreamSubscription.disposed(by: disposeBag)
-  }
-}
-
-// MARK: - Speech
-extension GameViewModel {
-  private func speak(word: String) {
-    let speechUtterance = AVSpeechUtterance(string: word)
-    speechUtterance.voice = AVSpeechSynthesisVoice(language: "fr")
-
-    speechSynthesizer.speak(speechUtterance)
   }
 }

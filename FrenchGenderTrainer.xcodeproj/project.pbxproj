@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B3253CD23BA2F5F005210D9 /* DataFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3253CC23BA2F5F005210D9 /* DataFacade.swift */; };
+		5B613EB723D71F8D00F45C21 /* AspiratedH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B613EB623D71F8D00F45C21 /* AspiratedH.swift */; };
 		5B65260423D357B1008EB332 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B65260323D357B1008EB332 /* AVFoundation.framework */; };
 		5B65260523D35820008EB332 /* Pods_FrenchGenderTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */; };
 		5B65260623D35820008EB332 /* Pods_FrenchGenderTrainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		5B3253CC23BA2F5F005210D9 /* DataFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFacade.swift; sourceTree = "<group>"; };
+		5B613EB623D71F8D00F45C21 /* AspiratedH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspiratedH.swift; sourceTree = "<group>"; };
 		5B65260323D357B1008EB332 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5B65260823D36B78008EB332 /* FrenchNouns.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = FrenchNouns.sqlite; sourceTree = "<group>"; };
 		5B65260923D36B78008EB332 /* FrenchNouns.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FrenchNouns.sqlite-shm"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				5BFCCACE22314CED0094ECB1 /* GenderRulesStruct.swift */,
 				5BA015A92250E3AE00DBDDFD /* DictionaryFactory.swift */,
 				5B3253CC23BA2F5F005210D9 /* DataFacade.swift */,
+				5B613EB623D71F8D00F45C21 /* AspiratedH.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				5BFCCAD222341A150094ECB1 /* WordFetch.swift in Sources */,
 				5BFCCABD22314CAF0094ECB1 /* GameView.swift in Sources */,
 				5B65260F23D4959C008EB332 /* GameViewModel.swift in Sources */,
+				5B613EB723D71F8D00F45C21 /* AspiratedH.swift in Sources */,
 				5B3253CD23BA2F5F005210D9 /* DataFacade.swift in Sources */,
 				5BE14AE923B7C6C200EEBB89 /* CoreDataStack.swift in Sources */,
 				5BE14AE623B7BFA700EEBB89 /* FrenchWord+CoreDataProperties.swift in Sources */,
