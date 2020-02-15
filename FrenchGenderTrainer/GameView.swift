@@ -68,7 +68,7 @@ extension GameView {
   private func newWord() -> FrenchWord? {
     // TODO: dataFacade.getRecords should be able to throw
     // TODO: if dataFacade fails, retry
-    self.frenchWord = dataFacade.getRecords(fetchLimit: 1, predicate: nil)[0]
+    self.frenchWord = dataFacade.getRandomRecords(fetchLimit: 1, predicate: nil)[0]  // getRecords(fetchLimit: 1, predicate: nil)[0]
 
     guard let frenchWord = self.frenchWord else {
       // TODO: Create meaningful error
@@ -83,13 +83,8 @@ extension GameView {
   private func initObservation() {
     let gameViewModel = GameViewModel.init(leftButton: leftButton, rightButton: rightButton)
 
-//    let interactionObservable = Observable
-//      .combineLatest(gameViewModel.stateStream,
-//      gameViewModel.buttonStream)
-
     let interactionStream = gameViewModel.stateStream
       .subscribe(onNext: { (state, button16) in
-//
         switch state {
         case .present:
           // TODO: if newWord returns nil, try again

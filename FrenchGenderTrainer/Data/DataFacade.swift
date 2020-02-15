@@ -25,7 +25,25 @@ class DataFacade {
 
 // MARK: - READ
 extension DataFacade {
-  // prepare for overloading if needed
+
+  func getRandomRecords(fetchLimit: Int , predicate: NSPredicate?)-> [FrenchWord] {
+    var allRecordsThatMatch = getRecords(fetchLimit: nil, predicate: predicate)
+
+    let returnLimit = min(fetchLimit, allRecordsThatMatch.count)
+
+    var allRecordsToReturn: [FrenchWord] = []
+
+    while allRecordsToReturn.count < returnLimit {
+      let arrayCount = UInt32(allRecordsThatMatch.count)
+      let randomNumber = Int(arc4random_uniform(arrayCount))
+
+      allRecordsToReturn.append(allRecordsThatMatch[randomNumber])
+      allRecordsThatMatch.remove(at: randomNumber)
+    }
+
+    return allRecordsToReturn
+  }
+
   func getRecords(fetchLimit: Int? , predicate: NSPredicate?) -> [FrenchWord] {
     let predicate = predicate ?? self.defaultPredicate
     let context = dictionaryFactory.managedContext
