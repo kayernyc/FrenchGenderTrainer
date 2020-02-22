@@ -25,8 +25,11 @@ class DataFacade {
 
 // MARK: - READ
 extension DataFacade {
+  func rule(by index: Int) -> GenderRuleAndException {
+    return self.rulesStruct.getRuleByIndex(index: index)
+  }
 
-  func getRandomRecords(fetchLimit: Int , predicate: NSPredicate?)-> [FrenchWord] {
+  func getRandomRecords(fetchLimit: Int , predicate: NSPredicate?) -> [FrenchWord] {
     var allRecordsThatMatch = getRecords(fetchLimit: nil, predicate: predicate)
 
     let returnLimit = min(fetchLimit, allRecordsThatMatch.count)

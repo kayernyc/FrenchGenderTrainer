@@ -12,15 +12,15 @@ import RxCocoa
 
 class GameViewModel: NSObject {
   enum GameViewStateEnum: String {
+    case start
     case present
-    case verify
     case explain
 
     func advanceState() -> GameViewStateEnum {
       switch self {
+      case .start:
+        return GameViewStateEnum.present
       case .present:
-        return GameViewStateEnum.verify
-      case .verify:
         return GameViewStateEnum.explain
       case .explain:
         return GameViewStateEnum.present
@@ -28,12 +28,15 @@ class GameViewModel: NSObject {
     }
   }
 
-  typealias StateButtonTuple = (GameViewStateEnum, Int16)
+  typealias StateButtonTuple = (GameViewStateEnum, Int16, FrenchWord)
 
   private let buttons: [Observable<Int>]
+  private let frenchWordModel = FrenchWordModel()
+  private var frenchWord: FrenchWord
 
   let buttonStream: Observable<Int>
-  let stateStream = BehaviorSubject(value: (GameViewStateEnum.explain, 0 as Int16))
+  let stateStream: BehaviorSubject<StateButtonTuple>
+  var wordStream: BehaviorSubject<FrenchWord>
 
   private let disposeBag = DisposeBag()
 
@@ -42,7 +45,12 @@ class GameViewModel: NSObject {
     .map {($0.rx.tap, $0.tag)}
     .map { obs, tag in obs.map {tag}}
 
+    // TODO: Should try/catch
+    frenchWord = frenchWordModel.newWord()!
+
     buttonStream = Observable.merge(buttons)
+    wordStream = BehaviorSubject(value: frenchWordModel.newWord()!)
+    stateStream = BehaviorSubject(value: (GameViewStateEnum.start, 0 as Int16, frenchWord))
 
     super.init()
     initObservables()
@@ -53,26 +61,16 @@ class GameViewModel: NSObject {
 private extension GameViewModel {
   func buttonAdvance(buttonTag: Int) {
     do {
-      let (currentState, _) = try stateStream.value()
+      var (currentState, _, frenchWord) = try stateStream.value()
       let button16 = Int16(buttonTag)
       let newState = currentState.advanceState()
-      stateStream.on(.next((newState, button16)))
+      if newState == .present {
+        frenchWord = frenchWordModel.newWord()!
+      }
+
+      stateStream.on(.next((newState, button16, frenchWord)))
     } catch {
       print(error)
-    }
-  }
-
-  private func stateHander(stateTuple: StateButtonTuple) {
-    let (state, _) = stateTuple
-    switch state {
-    case .present:
-      print("begin from GameViewModel")
-
-    case .verify:
-      print("verify from GameViewModel")
-
-    case .explain:
-      print("explain from GameViewModel")
     }
   }
 
@@ -91,12 +89,7 @@ private extension GameViewModel {
         onError: standardError,
         onCompleted: standardCompleted)
 
-    let stateStreamSubscription = stateStream
-      .subscribe(onNext: stateHander,
-         onError: standardError,
-         onCompleted: standardCompleted)
-
     buttonStreamSubscription.disposed(by: disposeBag)
-    stateStreamSubscription.disposed(by: disposeBag)
+
   }
 }

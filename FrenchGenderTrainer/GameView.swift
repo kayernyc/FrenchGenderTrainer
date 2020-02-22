@@ -28,17 +28,18 @@ class GameView: UIViewController {
   @IBOutlet var rightButton: UIButton!
   @IBOutlet var wordLabel: UILabel!
 
-  private let dataFacade = DataFacade()
   private let disposeBag = DisposeBag()
-
-  // TODO: Move this to external model
-  private var frenchWord: FrenchWord?
+  private let frenchWordModel = FrenchWordModel()
   private var labelObservable = BehaviorRelay<String>(value: "Start")
+  private let articlesModel = ArticlesModel()
 
   private let speechSynthesizer: AVSpeechSynthesizer! = AVSpeechSynthesizer()
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    leftButton.backgroundColor = AppBlue
+    rightButton.backgroundColor = AppPink
 
     initObservation()
   }
@@ -54,49 +55,64 @@ extension GameView {
   }
 }
 
-// MARK: - Verify Step
-extension GameView {
-  private func createWordPhrase(word: FrenchWord) -> String {
-    let string = word.french
+// MARK: - View Utilities
+private extension GameView {
+  func updateButtonBackgrounds (color: UIColor, buttons: [UIButton]) {
+    for button in buttons {
+      button.backgroundColor = color
+    }
+  }
 
-    return string ?? ""
+  func presentationLabel(for frenchWord: FrenchWord) -> String {
+    let french = frenchWord.french!
+    let english = frenchWord.english!
+
+    return """
+    \(french )
+    \(english )
+    """
+  }
+
+  func explanationLabel(for frenchWord: FrenchWord) -> String {
+    let french = frenchWord.french!
+    let english = frenchWord.english!
+
+    let frenchArticle = articlesModel.findArticle(for: french, inFrench: true, gender: Int(frenchWord.gender))
+    let englishArticle = articlesModel.findArticle(for: english, inFrench: false, gender: Int(frenchWord.gender))
+
+    return """
+    \(frenchArticle)\(french )
+    \(englishArticle)\(english )
+    """
   }
 }
 
 // MARK: - Data Stream
 extension GameView {
-  private func newWord() -> FrenchWord? {
-    // TODO: dataFacade.getRecords should be able to throw
-    // TODO: if dataFacade fails, retry
-    self.frenchWord = dataFacade.getRandomRecords(fetchLimit: 1, predicate: nil)[0]  // getRecords(fetchLimit: 1, predicate: nil)[0]
-
-    guard let frenchWord = self.frenchWord else {
-      // TODO: Create meaningful error
-      return nil
-    }
-    self.labelObservable.accept(frenchWord.french!)   //  = frenchWord.french!
-
-    print(frenchWord)
-    return frenchWord
-  }
 
   private func initObservation() {
     let gameViewModel = GameViewModel.init(leftButton: leftButton, rightButton: rightButton)
 
     let interactionStream = gameViewModel.stateStream
-      .subscribe(onNext: { (state, button16) in
+      .subscribe(onNext: { (state, button16, frenchWord) in
         switch state {
         case .present:
-          // TODO: if newWord returns nil, try again
-          self.frenchWord = self.newWord()
+          self.leftButton.backgroundColor = AppBlue
+          self.rightButton.backgroundColor = AppPink
+          self.labelObservable.accept(self.presentationLabel(for: frenchWord))
         case .explain:
-          print("is it correct? show correct, else show explanation")
-        case .verify:
-          if button16 == self.frenchWord?.gender {
+          self.updateButtonBackgrounds(color: frenchWord.gender == 0 ? AppBlue : AppPink,
+          buttons: [self.leftButton, self.rightButton])
+
+          if button16 == frenchWord.gender {
             print("CORRECT")
           } else {
             print("INCORRECT")
           }
+          let labelText = self.frenchWordModel.rule(for: frenchWord).explainationMessage(word: frenchWord)
+          print(labelText)
+        case .start:
+          print("start!")
         }
       }, onError: { (err) in
         print("ERROR: \(err)")
@@ -115,6 +131,5 @@ extension GameView {
 
     interactionStream.disposed(by: disposeBag)
     labelSubscription.disposed(by: disposeBag)
-
   }
 }
