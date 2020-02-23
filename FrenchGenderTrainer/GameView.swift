@@ -89,6 +89,26 @@ private extension GameView {
 
 // MARK: - Data Stream
 extension GameView {
+  private func updateViewForPresentation(state: GameViewStateEnum, button16: Int16, frenchWord: FrenchWord) {
+    self.leftButton.backgroundColor = AppBlue
+    self.rightButton.backgroundColor = AppPink
+    self.labelObservable.accept(self.presentationLabel(for: frenchWord))
+  }
+
+  private func updateViewForExplaination(state: GameViewStateEnum, button16: Int16, frenchWord: FrenchWord) {
+    self.updateButtonBackgrounds(color: frenchWord.gender == 0 ? AppBlue : AppPink,
+    buttons: [self.leftButton, self.rightButton])
+
+    self.labelObservable.accept(self.explanationLabel(for: frenchWord))
+
+    if button16 == frenchWord.gender {
+      print("CORRECT")
+    } else {
+      print("INCORRECT")
+    }
+    let labelText = self.frenchWordModel.rule(for: frenchWord).explainationMessage(word: frenchWord)
+    print(labelText)
+  }
 
   private func initObservation() {
     let gameViewModel = GameViewModel.init(leftButton: leftButton, rightButton: rightButton)
@@ -97,22 +117,9 @@ extension GameView {
       .subscribe(onNext: { (state, button16, frenchWord) in
         switch state {
         case .present:
-          self.leftButton.backgroundColor = AppBlue
-          self.rightButton.backgroundColor = AppPink
-          self.labelObservable.accept(self.presentationLabel(for: frenchWord))
+          self.updateViewForPresentation(state: state, button16: button16, frenchWord: frenchWord)
         case .explain:
-          self.updateButtonBackgrounds(color: frenchWord.gender == 0 ? AppBlue : AppPink,
-          buttons: [self.leftButton, self.rightButton])
-
-          self.labelObservable.accept(self.explanationLabel(for: frenchWord))
-
-          if button16 == frenchWord.gender {
-            print("CORRECT")
-          } else {
-            print("INCORRECT")
-          }
-          let labelText = self.frenchWordModel.rule(for: frenchWord).explainationMessage(word: frenchWord)
-          print(labelText)
+          self.updateViewForExplaination(state: state, button16: button16, frenchWord: frenchWord)
         case .start:
           print("start!")
         }

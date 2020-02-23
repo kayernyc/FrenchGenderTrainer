@@ -10,24 +10,24 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class GameViewModel: NSObject {
-  enum GameViewStateEnum: String {
-    case start
-    case present
-    case explain
+enum GameViewStateEnum: String {
+  case start
+  case present
+  case explain
 
-    func advanceState() -> GameViewStateEnum {
-      switch self {
-      case .start:
-        return GameViewStateEnum.present
-      case .present:
-        return GameViewStateEnum.explain
-      case .explain:
-        return GameViewStateEnum.present
-      }
+  func advanceState() -> GameViewStateEnum {
+    switch self {
+    case .start:
+      return GameViewStateEnum.present
+    case .present:
+      return GameViewStateEnum.explain
+    case .explain:
+      return GameViewStateEnum.present
     }
   }
+}
 
+class GameViewModel: NSObject {
   typealias StateButtonTuple = (GameViewStateEnum, Int16, FrenchWord)
 
   private let buttons: [Observable<Int>]
