@@ -104,6 +104,8 @@ extension GameView {
           self.updateButtonBackgrounds(color: frenchWord.gender == 0 ? AppBlue : AppPink,
           buttons: [self.leftButton, self.rightButton])
 
+          self.labelObservable.accept(self.explanationLabel(for: frenchWord))
+
           if button16 == frenchWord.gender {
             print("CORRECT")
           } else {

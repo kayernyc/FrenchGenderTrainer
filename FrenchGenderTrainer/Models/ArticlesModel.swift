@@ -9,11 +9,17 @@
 import Foundation
 
 class ArticlesModel {
-  private let vowles = ["a", "à", "â", "é", "â", "ê", "î", "ô", "û", "à",  "è", "ì", "ò", "ù", "ë", "ï", "ü", "A", "À", "Â", "E", "È", "É", "Ë", "I", "Î", "Ï", "Ì", "O", "Ô", "Ò", "Œ","œ", "æ", "Æ", "U", "Û", "Ü"]
-  private let aspiratedH = ["hôte", "héros", "haut-parleur", "hausse", "hauteur", "honte", "hanche", "hiérarchie", "haut"]
-  
+  private let vowles = ["a", "à", "â", "é", "â", "ê", "î", "ô", "û",
+                        "à",  "e", "è", "i","ì", "ò", "ù", "ë", "ï", "ü", "u",
+                        "A", "À", "Â", "E", "È", "É", "Ë", "I", "Î", "Ï",
+                        "Ì", "O", "Ô", "Ò", "Œ","œ", "æ", "Æ", "U", "Û", "Ü"]
+
+  private let aspiratedH = ["hôte", "héros", "haut-parleur", "hausse",
+                            "hauteur", "honte", "hanche", "hiérarchie", "haut"]
+
   func findFrenchArticle(word: String, firstLetter: String, gender: Int) -> String {
-    if ((firstLetter == "H" || firstLetter == "h") && aspiratedH.contains(word)) || vowles.contains(firstLetter) {
+    if ((firstLetter == "H" || firstLetter == "h")
+      && aspiratedH.contains(word)) || vowles.contains(firstLetter) {
       return "l'"
     }
 
@@ -21,10 +27,7 @@ class ArticlesModel {
   }
 
   func findEnglishArticle(firstLetter: String) -> String {
-    if vowles.contains(firstLetter) {
-      return "an "
-    }
-    return "a "
+    return "the "
   }
 
   func findArticle(for word: String, inFrench: Bool, gender: Int) -> String {
