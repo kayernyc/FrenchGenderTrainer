@@ -27,7 +27,8 @@ class GameView: UIViewController {
   @IBOutlet var leftButton: UIButton!
   @IBOutlet var rightButton: UIButton!
   @IBOutlet var wordLabel: UILabel!
-
+  @IBOutlet var explanationLabel: UILabel!
+  
   private let disposeBag = DisposeBag()
   private let frenchWordModel = FrenchWordModel()
   private var labelObservable = BehaviorRelay<String>(value: "Start")
@@ -89,6 +90,10 @@ private extension GameView {
 
 // MARK: - Data Stream
 extension GameView {
+  private func clearExplanationLabel() {
+    explanationLabel.text = ""
+  }
+
   private func updateViewForPresentation(state: GameViewStateEnum, button16: Int16, frenchWord: FrenchWord) {
     self.leftButton.backgroundColor = AppBlue
     self.rightButton.backgroundColor = AppPink
@@ -107,7 +112,7 @@ extension GameView {
       print("INCORRECT")
     }
     let labelText = self.frenchWordModel.rule(for: frenchWord).explainationMessage(word: frenchWord)
-    print(labelText)
+    explanationLabel.text = labelText
   }
 
   private func initObservation() {
@@ -117,10 +122,12 @@ extension GameView {
       .subscribe(onNext: { (state, button16, frenchWord) in
         switch state {
         case .present:
+          self.clearExplanationLabel()
           self.updateViewForPresentation(state: state, button16: button16, frenchWord: frenchWord)
         case .explain:
           self.updateViewForExplaination(state: state, button16: button16, frenchWord: frenchWord)
         case .start:
+          self.clearExplanationLabel()
           print("start!")
         }
       }, onError: { (err) in

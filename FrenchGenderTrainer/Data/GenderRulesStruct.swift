@@ -33,15 +33,17 @@ struct GenderRuleAndException {
       """
     }
 
+    explaination += "\n"
+
     let frenchWordCapped = frenchWord.capitalized
 
     if Int(word.gender) == gender {
       explaination += """
-       \(frenchWordCapped) is \(gender == 0 ?
+      \(frenchWordCapped) is \(gender == 0 ?
       "masculine" : "feminine") and follows the pattern.
       """
     } else {
-      explaination += " \(frenchWordCapped) is an exception."
+      explaination += "\(frenchWordCapped) is an exception."
     }
 
     return explaination
