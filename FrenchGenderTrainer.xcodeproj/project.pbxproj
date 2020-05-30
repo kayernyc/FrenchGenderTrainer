@@ -3,15 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5B3253CD23BA2F5F005210D9 /* DataFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3253CC23BA2F5F005210D9 /* DataFacade.swift */; };
 		5B613EB723D71F8D00F45C21 /* AspiratedH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B613EB623D71F8D00F45C21 /* AspiratedH.swift */; };
-		5B65260423D357B1008EB332 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B65260323D357B1008EB332 /* AVFoundation.framework */; };
 		5B65260523D35820008EB332 /* Pods_FrenchGenderTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */; };
-		5B65260623D35820008EB332 /* Pods_FrenchGenderTrainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B65260623D35820008EB332 /* Pods_FrenchGenderTrainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5B65260B23D36B79008EB332 /* FrenchNouns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5B65260823D36B78008EB332 /* FrenchNouns.sqlite */; };
 		5B65260C23D36B79008EB332 /* FrenchNouns.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 5B65260923D36B78008EB332 /* FrenchNouns.sqlite-shm */; };
 		5B65260D23D36B79008EB332 /* FrenchNouns.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 5B65260A23D36B79008EB332 /* FrenchNouns.sqlite-wal */; };
@@ -96,7 +95,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B65260423D357B1008EB332 /* AVFoundation.framework in Frameworks */,
 				5B65260523D35820008EB332 /* Pods_FrenchGenderTrainer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +266,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = happierplaces;
 				TargetAttributes = {
 					5BFCCAB622314CAF0094ECB1 = {
@@ -487,7 +485,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -542,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -568,7 +566,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.happierplaces.FrenchGenderTrainer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -588,7 +586,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.happierplaces.FrenchGenderTrainer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

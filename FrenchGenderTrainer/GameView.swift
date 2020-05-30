@@ -79,7 +79,8 @@ private extension GameView {
     let english = frenchWord.english!
 
     let frenchArticle = articlesModel.findArticle(for: french, inFrench: true, gender: Int(frenchWord.gender))
-    let englishArticle = articlesModel.findArticle(for: english, inFrench: false, gender: Int(frenchWord.gender))
+    let englishArticle = articlesModel
+      .findArticle(for: english, inFrench: false, gender: Int(frenchWord.gender))
 
     return """
     \(frenchArticle)\(french )
