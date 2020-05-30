@@ -22,8 +22,6 @@ class CoreDataStack: NSObject {
       }
     }
 
-//    let DBurl = self.applicationDocumentsDirectory.appendingPathComponent("FrenchNouns.sqlite")
-
     let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     let DBurl = documentURL.appendingPathComponent("FrenchNouns.sqlite")
 

@@ -14,15 +14,53 @@ struct GenderRuleAndException {
   let rule: String
   let exceptions: [String]?
   let matches: [String]?
+
+  func explainationMessage(word: FrenchWord) -> String {
+    guard let frenchWord = word.french, !word.french!.isEmpty else {
+      return ""
+    }
+
+    var explaination: String
+    if (rule.contains(" ")) {
+      // is a conceptual rule
+      explaination = rule
+    } else {
+      // is a pattern
+      explaination =
+      """
+      Words ending in \"\(rule)\" are usually
+      \(gender == 0 ? "masculine" : "feminine").
+      """
+    }
+
+    explaination += "\n"
+
+    let frenchWordCapped = frenchWord.capitalized
+
+    if Int(word.gender) == gender {
+      explaination += """
+      \(frenchWordCapped) is \(gender == 0 ?
+      "masculine" : "feminine") and follows the pattern.
+      """
+    } else {
+      explaination += "\(frenchWordCapped) is an exception."
+    }
+
+    return explaination
+  }
 }
 
 // swiftlint:disable line_length
 struct GenderRulesStruct {
   func allRulesCount() -> Int {
-    return self.mascRulesCollection.count
+    return self.rulesCollection.count
   }
 
-  let mascRulesCollection = [
+  func getRuleByIndex(index: Int) -> GenderRuleAndException {
+    return rulesCollection[index]
+  }
+
+  let rulesCollection = [
     GenderRuleAndException(key: 0, gender: 0, rule: "phone", exceptions: [], matches: []),
     GenderRuleAndException(key: 1, gender: 1, rule: "ence", exceptions: ["silence"], matches: []),
     GenderRuleAndException(key: 2, gender: 1, rule: "euse", exceptions: [], matches: []),
@@ -98,15 +136,15 @@ struct GenderRulesStruct {
     GenderRuleAndException(key: 72, gender: 0, rule: "a", exceptions: ["cafétéria", "pizza" ], matches: []),
     GenderRuleAndException(key: 73, gender: 0, rule: "Words ending in consonants (in the spelling) are usually masculine.", exceptions: ["mob", "pub", "alloc", "collec", "doc", "embroc", "fac", "réduc", "soif", "clef", "nef", "façon", "fin", "leçon", "main", "maman", "rançon", "chair", "cour", "cuiller", "mer", "tour", "brebis", "fois", "oasis", "souris", "vis", "burlat", "dent", "dot", "forêt", "mort", "nuit", "part", "plupart", "ziggourat", "roseval", "faim", "croix", "noix", "paix", "toux", "voix"], matches: ["b", "c", "d", "f", "l", "m", "n", "p", "r", "s", "t", "x"]),
     GenderRuleAndException(key: 74, gender: 0, rule: "Words ending in other consonants (in the spelling).", exceptions: [], matches: ["nez", "étang", "sang", "rang"]),
-    GenderRuleAndException(key: 75, gender: 0, rule: "Certain nouns referring to animals that can refer to only the male of the species. For example: étalon (stallion), cerf (stag), matou (tomcat).", exceptions: [], matches: ["étalon", "stag", "matou"]),
+    GenderRuleAndException(key: 75, gender: 0, rule: "Certain nouns referring to animals that can refer to only the male of the species are masculine. For example: étalon (stallion), cerf (stag), matou (tomcat).", exceptions: [], matches: ["étalon", "stag", "matou"]),
     GenderRuleAndException(key: 76, gender: 0, rule: "Masculine nouns that are \"generic\" terms and can refer to either a male or female of the species. For example, le cheval can refer to either a male or female horse.", exceptions: [],matches: ["cheval"]),
-    GenderRuleAndException(key: 77, gender: 0, rule: "Names of towns. Other place names (departments, rivers, countries) not ending in -e. Sometimes town names, especially if they look or sound feminine (e.g. Marseilles ending in -es), can be treated as feminine. This is quite rare, though.", exceptions: [], matches: ["Mexique", "Combodge", "Rhône", "Finistère", "Zimbabwe", "Norvège"]),
+    GenderRuleAndException(key: 77, gender: 0, rule: "Names of towns or other place names (departments, rivers, countries) not ending in -e. Sometimes town names, especially if they look or sound feminine can be treated as feminine.", exceptions: ["Marseiles", "Mantes-la-Jolie", "Bruxelles"], matches: ["Mexique", "Combodge", "Rhône", "Finistère", "Zimbabwe", "Norvège"]),
     GenderRuleAndException(key: 78, gender: 0, rule: "Nouns ending in eur, generally derived from a verb, denoting people, professions, machines carrying out an activity or scientific things: aspirateur, facteur, ordinateur", exceptions: [], matches: ["aspirateur", "facteur", "ordinateur"]),
-    GenderRuleAndException(key: 79, gender: 0, rule: "Compound nouns of the form verb-noun: porte-monnaie, pare-brise, tire-bouchon.", exceptions: [], matches: ["porte-monnaie", "pare-brise", "tire-bouchon"]),
-    GenderRuleAndException(key: 80, gender: 0, rule: "Nouns referring to male people.", exceptions: [], matches: ["adulte", "homme", "père", "frère", "oncle", "cousin", "garçon"]),
+    GenderRuleAndException(key: 79, gender: 0, rule: "Compound nouns of the form verb-noun such as porte-monnaie, pare-brise, tire-bouchon are masculine.", exceptions: [], matches: ["porte-monnaie", "pare-brise", "tire-bouchon"]),
+    GenderRuleAndException(key: 80, gender: 0, rule: "Nouns referring to male people are often masculine.", exceptions: [], matches: ["adulte", "homme", "père", "frère", "oncle", "cousin", "garçon"]),
     GenderRuleAndException(key: 81, gender: 0, rule: "A handful of nouns are masculine, whatever the gender of the person they refer to, e.g.: amateur, artiste, auteur, nudiste, témoin, vainqueur, voyou plus certain job titles.", exceptions: [], matches: ["amateur", "artiste", "auteur", "adolescent", "nudiste", "témoin", "vainqueur", "voyou"]),
-    GenderRuleAndException(key: 82, gender: 1, rule: "Place names ending in -e.", exceptions: [], matches: ["Franche-Comté", "Belize", "Cambodge", "Mexique", "Mozambique", "Zaïre", "Zimbabwe"]),
-    GenderRuleAndException(key: 83, gender: 1, rule: "Nouns referring to female people.", exceptions: [], matches: ["femme", "fille", "tante", "mère", "sœur", "fille"]),
+    GenderRuleAndException(key: 82, gender: 1, rule: "Place names ending in -e are you usually feminie.", exceptions: [], matches: ["Franche-Comté", "Belize", "Cambodge", "Mexique", "Mozambique", "Zaïre", "Zimbabwe"]),
+    GenderRuleAndException(key: 83, gender: 1, rule: "Many nouns referring to female people are feminine.", exceptions: [], matches: ["femme", "fille", "tante", "mère", "sœur", "fille"]),
     GenderRuleAndException(key: 84, gender: 1, rule: "These are feminine, whatever the gender of the person: personne, victime, recrue (recruit), connaissance (acquaintance).", exceptions: [], matches: ["personne", "victime", "recrue", "connaissance"]),
     GenderRuleAndException(key: 85, gender: 1, rule: "Certain nouns referring to animals that can refer to only the female of the species. For example: chatte (female cat), chienne (bitch), louve (she-wolf).", exceptions: [], matches: ["chatte", "chienne", "louve"]),
     GenderRuleAndException(key: 86, gender: 1, rule: "Feminine nouns that are \"generic\" terms and can refer to either male or female of the species. For example, la souris can refer to either a male or female mouse.", exceptions: [],matches: []),
