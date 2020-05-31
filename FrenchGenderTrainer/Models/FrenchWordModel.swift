@@ -30,6 +30,6 @@ class FrenchWordModel {
   }
 
   init() {
-    
+
   }
 }
