@@ -9,10 +9,10 @@
 import Foundation
 
 class ArticlesModel {
-  private let vowles = ["a", "à", "â", "é", "â", "ê", "î", "ô", "û",
-                        "à",  "e", "è", "i","ì", "ò", "ù", "ë", "ï", "ü", "u",
-                        "A", "À", "Â", "E", "È", "É", "Ë", "I", "Î", "Ï",
-                        "Ì", "O", "Ô", "Ò", "Œ","œ", "æ", "Æ", "U", "Û", "Ü"]
+  private let vowles = ["a", "à", "â", "æ", "e", "è", "é", "ê", "ë", "î", "ï", "i","ì",
+                        "ô", "o","ò", "œ", "û", "ù", "ü", "u",
+                        "A", "À", "Â", "Æ", "E", "È", "É", "Ê", "Ë", "I", "Î", "Ï",
+                        "Ì", "O", "Ô", "Ò", "Œ", "U", "Ù", "Û", "Ü"]
 
   private let aspiratedH = ["hôte", "héros", "haut-parleur", "hausse",
                             "hauteur", "honte", "hanche", "hiérarchie", "haut"]
@@ -39,5 +39,4 @@ class ArticlesModel {
       return findEnglishArticle(firstLetter: firstLetter)
     }
   }
-
 }

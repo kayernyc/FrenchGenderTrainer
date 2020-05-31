@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import AVKit
 
-class GameView: UIViewController {
+class GameView: UIViewController, CAAnimationDelegate {
   private enum SpeechEnum: String {
     case male
     case female
@@ -24,15 +24,17 @@ class GameView: UIViewController {
     }
   }
 
-  @IBOutlet var leftButton: UIButton!
-  @IBOutlet var rightButton: UIButton!
+  @IBOutlet var leftButton: GenderButton!
+  @IBOutlet var rightButton: GenderButton!
   @IBOutlet var wordLabel: UILabel!
   @IBOutlet var explanationLabel: UILabel!
-  
+
   private let disposeBag = DisposeBag()
   private let frenchWordModel = FrenchWordModel()
   private var labelObservable = BehaviorRelay<String>(value: "Start")
   private let articlesModel = ArticlesModel()
+
+  private let animationDuration = 0.3
 
   private let speechSynthesizer: AVSpeechSynthesizer! = AVSpeechSynthesizer()
 
@@ -96,22 +98,29 @@ extension GameView {
   }
 
   private func updateViewForPresentation(state: GameViewStateEnum, button16: Int16, frenchWord: FrenchWord) {
-    self.leftButton.backgroundColor = AppBlue
-    self.rightButton.backgroundColor = AppPink
+    leftButton.fadeTo(fromColor: leftButton.backgroundColor ?? AppBlue, toColor: AppBlue)
+    rightButton.fadeTo(fromColor: rightButton.backgroundColor ?? AppPink, toColor: AppPink)
     self.labelObservable.accept(self.presentationLabel(for: frenchWord))
   }
 
   private func updateViewForExplaination(state: GameViewStateEnum, button16: Int16, frenchWord: FrenchWord) {
-    self.updateButtonBackgrounds(color: frenchWord.gender == 0 ? AppBlue : AppPink,
-    buttons: [self.leftButton, self.rightButton])
+    let buttons = [self.leftButton, self.rightButton]
+    let targetButtonColor = frenchWord.gender == 0 ? AppBlue : AppPink
 
     self.labelObservable.accept(self.explanationLabel(for: frenchWord))
 
-    if button16 == frenchWord.gender {
-      print("CORRECT")
-    } else {
-      print("INCORRECT")
+    for button in buttons {
+      guard let button = button else {
+        continue
+      }
+      let buttonStartColor = button.backgroundColor ?? targetButtonColor
+      button.fadeTo(fromColor: buttonStartColor, toColor: targetButtonColor)
+
+      if button16 != frenchWord.gender {
+        button.flash()
+      }
     }
+
     let labelText = self.frenchWordModel.rule(for: frenchWord).explainationMessage(word: frenchWord)
     explanationLabel.text = labelText
   }

@@ -31,6 +31,7 @@
 		5BFCCACF22314CED0094ECB1 /* GenderRulesStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCACE22314CED0094ECB1 /* GenderRulesStruct.swift */; };
 		5BFCCAD222341A150094ECB1 /* FrenchWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCAD122341A150094ECB1 /* FrenchWordModel.swift */; };
 		5BFCCADA22341AB30094ECB1 /* FrenchGenderTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCAD922341AB30094ECB1 /* FrenchGenderTrainerTests.swift */; };
+		5BFED00E2482CC1300645518 /* GenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFED00D2482CC1300645518 /* GenderButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		5BFCCAD722341AB30094ECB1 /* FrenchGenderTrainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrenchGenderTrainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFCCAD922341AB30094ECB1 /* FrenchGenderTrainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenchGenderTrainerTests.swift; sourceTree = "<group>"; };
 		5BFCCADB22341AB30094ECB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BFED00D2482CC1300645518 /* GenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
 		5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrenchGenderTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		843EC282ED8C8B5D9E526B36 /* Pods-FrenchGenderTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrenchGenderTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrenchGenderTrainer/Pods-FrenchGenderTrainer.release.xcconfig"; sourceTree = "<group>"; };
 		DFC5CB85278F4725789C70C1 /* Pods-FrenchGenderTrainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrenchGenderTrainer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrenchGenderTrainer/Pods-FrenchGenderTrainer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +118,16 @@
 				5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B9F0E512482B24300436F86 /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				5B65260E23D4959C008EB332 /* GameViewModel.swift */,
+				5BFCCABC22314CAF0094ECB1 /* GameView.swift */,
+				5BFED00D2482CC1300645518 /* GenderButton.swift */,
+			);
+			path = GameView;
 			sourceTree = "<group>";
 		};
 		5BE14AE723B7C6AA00EEBB89 /* CoreData */ = {
@@ -162,13 +174,12 @@
 		5BFCCAB922314CAF0094ECB1 /* FrenchGenderTrainer */ = {
 			isa = PBXGroup;
 			children = (
+				5B9F0E512482B24300436F86 /* GameView */,
 				5BF6497424016AA000311468 /* Style */,
 				5BE14AE723B7C6AA00EEBB89 /* CoreData */,
 				5BFCCACD22314CD90094ECB1 /* Data */,
 				5BFCCACC22314CC30094ECB1 /* Models */,
 				5BFCCABA22314CAF0094ECB1 /* AppDelegate.swift */,
-				5B65260E23D4959C008EB332 /* GameViewModel.swift */,
-				5BFCCABC22314CAF0094ECB1 /* GameView.swift */,
 				5BFCCABE22314CAF0094ECB1 /* Main.storyboard */,
 				5BFCCAC122314CB00094ECB1 /* Assets.xcassets */,
 				5BFCCAC322314CB00094ECB1 /* LaunchScreen.storyboard */,
@@ -381,6 +392,7 @@
 			files = (
 				5BE14AE523B7BFA700EEBB89 /* FrenchWord+CoreDataClass.swift in Sources */,
 				5BFCCAD222341A150094ECB1 /* FrenchWordModel.swift in Sources */,
+				5BFED00E2482CC1300645518 /* GenderButton.swift in Sources */,
 				5BFCCABD22314CAF0094ECB1 /* GameView.swift in Sources */,
 				5B65260F23D4959C008EB332 /* GameViewModel.swift in Sources */,
 				5B613EB723D71F8D00F45C21 /* AspiratedH.swift in Sources */,
