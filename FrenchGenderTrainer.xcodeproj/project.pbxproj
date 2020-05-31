@@ -32,6 +32,7 @@
 		5BFCCAD222341A150094ECB1 /* FrenchWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCAD122341A150094ECB1 /* FrenchWordModel.swift */; };
 		5BFCCADA22341AB30094ECB1 /* FrenchGenderTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCCAD922341AB30094ECB1 /* FrenchGenderTrainerTests.swift */; };
 		5BFED00E2482CC1300645518 /* GenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFED00D2482CC1300645518 /* GenderButton.swift */; };
+		5BFED0112483F06F00645518 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFED0102483F06F00645518 /* RulesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		5BFCCAD922341AB30094ECB1 /* FrenchGenderTrainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenchGenderTrainerTests.swift; sourceTree = "<group>"; };
 		5BFCCADB22341AB30094ECB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BFED00D2482CC1300645518 /* GenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
+		5BFED0102483F06F00645518 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		5D3DBCA9A014D2C83B7D1FC5 /* Pods_FrenchGenderTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrenchGenderTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		843EC282ED8C8B5D9E526B36 /* Pods-FrenchGenderTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrenchGenderTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrenchGenderTrainer/Pods-FrenchGenderTrainer.release.xcconfig"; sourceTree = "<group>"; };
 		DFC5CB85278F4725789C70C1 /* Pods-FrenchGenderTrainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrenchGenderTrainer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrenchGenderTrainer/Pods-FrenchGenderTrainer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		5BFCCAB922314CAF0094ECB1 /* FrenchGenderTrainer */ = {
 			isa = PBXGroup;
 			children = (
+				5BFED00F2483F03B00645518 /* RulesView */,
 				5B9F0E512482B24300436F86 /* GameView */,
 				5BF6497424016AA000311468 /* Style */,
 				5BE14AE723B7C6AA00EEBB89 /* CoreData */,
@@ -217,6 +220,14 @@
 				5BFCCADB22341AB30094ECB1 /* Info.plist */,
 			);
 			path = FrenchGenderTrainerTests;
+			sourceTree = "<group>";
+		};
+		5BFED00F2483F03B00645518 /* RulesView */ = {
+			isa = PBXGroup;
+			children = (
+				5BFED0102483F06F00645518 /* RulesView.swift */,
+			);
+			path = RulesView;
 			sourceTree = "<group>";
 		};
 		E65F76E325CFBBA26D948B48 /* Pods */ = {
@@ -390,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BFED0112483F06F00645518 /* RulesView.swift in Sources */,
 				5BE14AE523B7BFA700EEBB89 /* FrenchWord+CoreDataClass.swift in Sources */,
 				5BFCCAD222341A150094ECB1 /* FrenchWordModel.swift in Sources */,
 				5BFED00E2482CC1300645518 /* GenderButton.swift in Sources */,

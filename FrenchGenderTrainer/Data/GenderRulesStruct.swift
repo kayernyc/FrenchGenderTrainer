@@ -15,12 +15,9 @@ struct GenderRuleAndException {
   let exceptions: [String]?
   let matches: [String]?
 
-  func explainationMessage(word: FrenchWord) -> String {
-    guard let frenchWord = word.french, !word.french!.isEmpty else {
-      return ""
-    }
+  func ruleString() -> String {
+    var explaination = ""
 
-    var explaination: String
     if (rule.contains(" ")) {
       // is a conceptual rule
       explaination = rule
@@ -33,6 +30,15 @@ struct GenderRuleAndException {
       """
     }
 
+    return explaination
+  }
+
+  func explainationMessage(word: FrenchWord) -> String {
+    guard let frenchWord = word.french, !word.french!.isEmpty else {
+      return ""
+    }
+
+    var explaination = ruleString()
     explaination += "\n"
 
     let frenchWordCapped = frenchWord.capitalized
@@ -111,7 +117,7 @@ struct GenderRulesStruct {
     GenderRuleAndException(key: 47, gender: 1, rule: "rre", exceptions: ["beurre", "parterre", "tonnerre", "verre"], matches: []),
     GenderRuleAndException(key: 48, gender: 0, rule: "de", exceptions: ["bride", "merde", "méthode", "pinède", "ade, -nde, -ude endings"], matches: []),
     GenderRuleAndException(key: 49, gender: 1, rule: "ée", exceptions: ["lycée", "musée"], matches: []),
-    GenderRuleAndException(key: 50, gender: 0, rule: "et ", exceptions: [], matches: []),
+    GenderRuleAndException(key: 50, gender: 0, rule: "et", exceptions: [], matches: []),
     GenderRuleAndException(key: 51, gender: 0, rule: "ot", exceptions: [], matches: []),
     GenderRuleAndException(key: 52, gender: 0, rule: "at", exceptions: [], matches: []),
     GenderRuleAndException(key: 53, gender: 0, rule: "il", exceptions: [], matches: []),
@@ -145,11 +151,11 @@ struct GenderRulesStruct {
     GenderRuleAndException(key: 81, gender: 0, rule: "A handful of nouns are masculine, whatever the gender of the person they refer to, e.g.: amateur, artiste, auteur, nudiste, témoin, vainqueur, voyou plus certain job titles.", exceptions: [], matches: ["amateur", "artiste", "auteur", "adolescent", "nudiste", "témoin", "vainqueur", "voyou"]),
     GenderRuleAndException(key: 82, gender: 1, rule: "Place names ending in -e are you usually feminie.", exceptions: [], matches: ["Franche-Comté", "Belize", "Cambodge", "Mexique", "Mozambique", "Zaïre", "Zimbabwe"]),
     GenderRuleAndException(key: 83, gender: 1, rule: "Many nouns referring to female people are feminine.", exceptions: [], matches: ["femme", "fille", "tante", "mère", "sœur", "fille"]),
-    GenderRuleAndException(key: 84, gender: 1, rule: "These are feminine, whatever the gender of the person: personne, victime, recrue (recruit), connaissance (acquaintance).", exceptions: [], matches: ["personne", "victime", "recrue", "connaissance"]),
+    GenderRuleAndException(key: 84, gender: 1, rule: "Certain words for people are feminine, whatever the gender of the person: personne, victime, recrue (recruit), connaissance (acquaintance).", exceptions: [], matches: ["personne", "victime", "recrue", "connaissance"]),
     GenderRuleAndException(key: 85, gender: 1, rule: "Certain nouns referring to animals that can refer to only the female of the species. For example: chatte (female cat), chienne (bitch), louve (she-wolf).", exceptions: [], matches: ["chatte", "chienne", "louve"]),
     GenderRuleAndException(key: 86, gender: 1, rule: "Feminine nouns that are \"generic\" terms and can refer to either male or female of the species. For example, la souris can refer to either a male or female mouse.", exceptions: [],matches: []),
     GenderRuleAndException(key: 87, gender: 1, rule: "Most other endings consisting of Vowel + Consonant + e: -ine, -ise, -alle, -elle, -esse, -ette etc", exceptions: [], matches: ["episode", "espace", "intervalle", "mille", "magazine", "réverbère", "squelette"]),
-    GenderRuleAndException(key: 88, gender: 1, rule: "Figurative nouns ending in -eur, usually derived from an adjective: rougeur, largeur, pâleur, couleur, horreur, rumeur", exceptions: [], matches: []),
+    GenderRuleAndException(key: 88, gender: 1, rule: "Figurative nouns ending in -eur, usually derived from an adjective: rougeur, largeur, pâleur, couleur, horreur, rumeur are usually feminine.", exceptions: [], matches: []),
     GenderRuleAndException(key: 89, gender: 1, rule: "Words for durations of time are feminine", exceptions: [], matches: ["journée", "année", "soirée", "matinée", "nuitée"]),
     GenderRuleAndException(key: 90, gender: 1, rule: "Words for points in time are masculine", exceptions: [], matches: ["jour", "an", "soir", "matin"]),
     GenderRuleAndException(key: 91, gender: 1, rule: "Apocopes are words which drop part of the end. Think of \"cred\" for credit or \"mag\" for magazine in English. Apocopes in French usually take the gender of their source words.", exceptions: [], matches: ["santiag", "métro", "vélo", "auto", "accu", "actu", "ado", "appart", "ciné", "fac", "manif", "météo", "moto"]),
