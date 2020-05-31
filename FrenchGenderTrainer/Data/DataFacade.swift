@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import CoreData
 
+protocol DataFacadeProtocol {
+  var dataFacade: DataFacade { get set }
+}
+
 class DataFacade {
   private let dictionaryFactory = DictionaryFactory.sharedInstance
   private let rulesStruct = GenderRulesStruct()
@@ -25,6 +29,10 @@ class DataFacade {
 
 // MARK: - READ
 extension DataFacade {
+  func rules() -> [GenderRuleAndException] {
+    return self.rulesStruct.rulesCollection
+  }
+
   func rule(by index: Int) -> GenderRuleAndException {
     return self.rulesStruct.getRuleByIndex(index: index)
   }

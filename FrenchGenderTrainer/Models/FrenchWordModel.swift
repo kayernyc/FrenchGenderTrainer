@@ -9,7 +9,6 @@
 import Foundation
 
 class FrenchWordModel {
-//  let dictionary = DictionaryFactory()
   private let dataFacade = DataFacade()
 
   func rule(for word: FrenchWord) -> GenderRuleAndException {
